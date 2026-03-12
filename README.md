@@ -1,34 +1,35 @@
 # University Timetable Management System
 
-A centralized web-based platform to create, manage, and view university timetables efficiently. This system ensures clash-free scheduling, supports multiple departments, and provides role-based access for admins, faculty, and students.
+A centralized web-based platform to create, manage, and view university timetables efficiently. The system ensures conflict-free scheduling and provides role-based access for administrators, faculty, and students.
 
 ## Overview
 
-The University Timetable Management System replaces traditional paper-based timetable management with a centralized digital solution. It automates conflict detection, supports multiple departments, and provides real-time updates for all users.
+This project was initially developed as a Software Engineering course project (CSC-225, Fall 2025) and is now being continued as a Database Systems course project (CSC-271, Spring 2026). The scope has been refined to focus on core database design and implementation, including schema normalization, conflict detection, role-based access control, and a faculty schedule change request workflow.
 
 ## Objectives
 
- - To provide a platform where administrators can conveniently create, update, and manage timetables for all departments and courses.
-- To help administrators in finding and resolving clashes between classes, instructors, and class venues.
-- To implement role-based access for administrators, faculty, and students.
-- To design a user-friendly web interface that provides ease of use for all users.
-- To allow students and faculty to view updated schedules through dashboards online whenever changes occur.
-- To store previous timetable records for future reference.
-
-
+- Design a normalized relational database schema for all timetabling entities.
+- Implement venue and instructor conflict detection using SQL queries.
+- Enforce Role-Based Access Control for Admin, Faculty, and Student users.
+- Enable administrators to create, validate, and publish timetables.
+- Allow faculty and students to view their respective schedules through role-specific dashboards.
+- Enable faculty to submit schedule change requests for administrator review.
 
 ## Project Team
 
-**Course:** CSC-225: Software Engineering (Fall 2025)  
-**Institution:** Namal University, Mianwali  
-**Requirement Provider:** Abdul Rafay
+| Course | Semester |
+|--------|----------|
+| CSC-225: Software Engineering | Fall 2025 |
+| CSC-271: Database Systems | Spring 2026 |
+
+**Institution:** Namal University, Mianwali
 
 | Name | Registration No. |
 |------|------------------|
 | Hammad Shabir | NUM-BSCS-2024-25 |
 | Ahmer Sultan | NUM-BSCS-2024-03 |
-| Husnain Ali | NUM-BSCS-2024-26 |
 
 ## Documentation
 
-**Minutes of Meeting:** [View Meeting Notes](https://docs.google.com/spreadsheets/d/1ut1k-vMyw3Ud6mKhEWMeYdymiTB3E6LWu8DRQIvDKIg/edit?usp=sharing)
+- **Software Engineering:** Available in the `/Software Engineering` folder
+- **Database Systems:** Available in the `/Database Systems` folder
