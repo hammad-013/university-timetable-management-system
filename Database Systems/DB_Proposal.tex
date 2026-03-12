@@ -1,0 +1,281 @@
+\documentclass[12pt, a4paper]{report}
+\usepackage[a4paper, margin=1in, headheight=14pt]{geometry}
+\usepackage{colortbl}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fontenc}
+\usepackage{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{url}
+\usepackage{inputenc}
+
+\definecolor{mygray}{RGB}{88, 88, 88}
+
+\hypersetup{
+    hidelinks
+}
+
+\titleformat{\section}
+    {\large\bfseries}
+    {\thesection.}{0.5em}{}
+\titlespacing{\section}{0pt}{14pt}{6pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\small University Timetable Management System - Database Proposal}
+\cfoot{\small Page \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+
+\includegraphics[width=6cm]{namal-logo.png}\\[1em]
+
+{\Large \textbf{Namal University, Mianwali}}\\[1.2em]
+{\large Department of Computer Science}\\[3.5em]
+
+{\LARGE \textbf{Project Proposal for}}\\[1.7em]
+{\large \textcolor{mygray}{\textbf{University Timetable Management System}}}\\[1.7em]
+{\large CSC-271: Database Systems}\\[1.5em]
+{\large \textbf{Spring 2026}}\\[3.2em]
+
+{\large \textbf{Submitted By:}}\\[0.7em]
+
+\setlength{\tabcolsep}{12pt}
+\renewcommand{\arraystretch}{1.3}
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{5cm}|}
+\hline
+\textbf{Sr. No} & \textbf{Name} & \textbf{Reg. No} \\ \hline
+1 & Hammad Shabir & NUM-BSCS-2024-25 \\ \hline
+2 & Ahmer Sultan & NUM-BSCS-2024-03 \\ \hline
+\end{tabular}
+\end{table}
+\vspace{2em}
+
+{\large \textbf{Submission Date:} 12 March 2026}\\[3em]
+
+\thispagestyle{empty}
+
+\end{titlepage}
+
+\setcounter{page}{1}
+\pagenumbering{arabic}
+\setcounter{section}{0}
+\renewcommand\thesection{\arabic{section}}  
+\renewcommand{\contentsname}{Table of Contents}
+\tableofcontents
+\newpage
+
+\section{Introduction}
+
+In any education system, time management is very important for both teachers and
+students. A managed schedule helps everyone stay organized and focused. Therefore, managing university timetables manually through spreadsheets and emails is a time consuming and error-prone process. Moreover, changing a class becomes a problem with manual process. The University Timetable Management System is a web-based application that solves these problems by centralizing timetable creation and management for university. It allows administrators to create and publish timetables, faculty to view their assigned schedules and submit schedule change requests, and students to access their class timetables all from a single platform.
+
+\section{Problem Statement}
+
+The current manual timetable process suffers from the following issues:
+
+\begin{itemize}
+    \item Venue conflicts: The same classroom is accidentally assigned to two courses at the same time.
+    \item Instructor conflicts: A faculty member is scheduled for two courses simultaneously.
+    \item No central system: Timetable data is scattered with no single source.
+    \item No Change Request Mechanism: Faculty have no formal way to request changes to their assigned schedule, forcing them to make use of emails or verbal communication.
+\end{itemize}
+
+These problems lead to schedule mishaps, wastage of administrative time. To overcome these gaps, a database based system with role based access and constraints should be implemented.
+
+\section{Objectives}
+The key objectives of the University Timetable Management System are \cite{srs}:
+
+\begin{enumerate}
+    \item Design a normalized relational database schema for all entities.
+    \item Implement venue and instructor conflict detection.
+    \item Enforce Role-Based Access Control for Admin, Faculty, and Student users.
+    \item Enable administrators to create and publish timetables.
+    \item Allow faculty and students to view their respective schedules.
+    \item Enable faculty to submit schedule change requests for administrator review.
+\end{enumerate}
+
+\section{Scope}
+
+The following features are included in the system \cite{srs}:
+
+\begin{itemize}
+    \item \textbf{Timetable Management:} Create, edit, delete, and publish timetables and export to CSV.
+    \item \textbf{Conflict Detection:} Venue double-booking and instructor overlap detection.
+    \item \textbf{User Management:} Registration, login, RBAC, profile management, user deactivation.
+    \item \textbf{Resource Management:} Venue and lab database with conflict prevention.
+    \item \textbf{Course Management:} Course registry linked to departments and instructors.
+    \item \textbf{Dashboards:} Role-specific views for Admin, Faculty, and Student.
+\end{itemize}
+
+The following are explicitly excluded:
+
+\begin{itemize}
+    \item Automatic timetable generation.
+    \item Timetable archiving and versioning.
+    \item All reporting (summary, utilization, audit log).
+    \item Soft-delete, MFA, bulk user import, timetable import, scheduled/in-app notifications, conflict resolution suggestions.
+\end{itemize}
+
+\section{Data Collection}
+
+Data required to test the system will be collected as follows:
+
+\begin{itemize}
+    \item User data (faculty and students): obtained from kaggle/mendeley data and github.
+    \item Course and department information: collected from university's website.
+    \item Venue and lab details: manually created.
+    \item Academic calendar and time slot configuration: set up by the Admin based on the university schedule.
+    \item Sample/test data: synthetic data generated using Python(Faker).
+\end{itemize}
+
+\section{Technology Stack}
+
+The following technologies have been selected based on their suitability for a relational database-driven web application:
+
+\vspace{0.5em}
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{} p{2.5cm} p{2.5cm} p{8.5cm} @{}}
+\toprule
+\textbf{Layer}          & \textbf{Technology}       & \textbf{Purpose}                          \\
+\midrule
+Database       & MySQL 8.4+                & Core relational database for storing and managing all data \\
+\addlinespace
+Backend        & Node.js + Express.js      & Handles server-side logic, database queries, and communication between frontend and database \\
+\addlinespace
+Frontend       & React                 & User interface for students, faculty, and admins \\
+\addlinespace
+Authentication & bcrypt / Argon2           & Ensures passwords are stored securely using strong hashing algorithms \\
+\addlinespace
+Version Control& Git / GitHub             & Source code version control and collaborative development \\
+\bottomrule
+\end{tabular}
+\caption{Technology Stack}
+\label{tab:technology-stack}
+\end{table}
+
+\section{System Functionality}
+The following functionalities describe the core operations the system will support, based on the defined scope \cite{srs}.
+
+\begin{enumerate}
+    \item Administrators can create, edit, delete, and publish timetables by assigning courses, instructors, venues, and time slots.
+    \item The system detects and does not let the administrator select a venue or instructor at the same time slot.
+    \item Administrators can manage user accounts including creation, deactivation, and role assignment.
+    \item Users log in with email and password and their access is restricted based on their role.
+    \item Faculty can view only their assigned courses and schedule.
+    \item Faculty can submit a schedule change request specifying the request type, preferred time slot, venue, and reason.
+    \item Students can view only their enrolled class timetable.
+    \item Administrators can manage venues, labs and courses.
+    \item Administrators can review pending schedule change requests and approve or reject them.
+    \item Timetable data can be exported to CSV.
+\end{enumerate}
+
+\section{User Classes}
+The system defines three user roles, each with distinct access levels within the system.
+
+\vspace{0.5em}
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{} p{2.5cm} p{4.5cm} p{6.5cm} @{}}
+\toprule
+\textbf{Role} & \textbf{Description} & \textbf{Access Level} \\
+\midrule
+Admin & Manages the entire system & Full access: timetables, users, resources, settings \\
+\addlinespace
+Faculty & Teaching staff & View own assigned schedule only, submit schedule change requests \\
+\addlinespace
+Student & Enrolled students & View own class timetable only \\
+\bottomrule
+\end{tabular}
+\caption{User Classes}
+\label{tab:roles-access}
+\end{table}
+
+\section{Task Division}
+The project has been divided among team members keeping balanced contribution and responsibilities. All members will also be collaborating with each other throughout the project helping each other with their task.
+\vspace{0.5em}
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{} p{3cm} p{6cm} p{6cm} @{}}
+\toprule
+\textbf{Phase} & \textbf{Hammad Shabbir} & \textbf{Ahmer Sultan} \\
+\midrule
+Proposal Report &
+Introduction, Problem Statement, Objectives, Scope &
+Data Collection, Technology Stack, Functionality, User Classes Conclusion \\
+\addlinespace
+Database Design &
+ER Diagram, Users, Courses, Departments Tables &
+ER Diagram, Timetable, Venues, Time Slots Tables \\
+\addlinespace
+Backend &
+Authentication, RBAC, User Management &
+Timetable Management, Conflict Detection, Schedule Change Requests \\
+\addlinespace
+Frontend &
+Admin Panel, User Management Pages &
+Faculty \& Student Dashboards Pages \\
+\bottomrule
+\end{tabular}
+\caption{Task Division}
+\label{tab:task-division}
+\end{table}
+
+\section{Conclusion}
+
+The University Timetable Management System will replace the existing manual and unstable scheduling process with an organized database-based system. The University Timetable Management System will decrease errors in scheduling and administration overhead due to enforcing role-based access, conflict detection, and centralized data management. The project scope is suitable as it relates to the course Database Systems because it offers practical implementation of concepts such as schema normalization, relational integrity, role-based access control and constraint enforcement.
+
+\renewcommand{\bibname}{References}
+\begin{thebibliography}{9}
+    \bibitem{srs}
+H. Shabbir and A. Sultan, ``Software requirements specification: University timetable management system,'' Namal University, Mianwali, Pakistan, 2025.
+\bibitem{github}
+``University timetable management system,'' GitHub. Available: \url{https://github.com/hammad-013/universty-timetable-management-system}
+\end{thebibliography}
+
+\appendix
+\section*{Appendix 1: AI Tools Used}
+
+\vspace{0.5em}
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{p{3.2cm} p{5.0cm} p{7.5cm}}
+\toprule
+\textbf{Tool} & \textbf{Purpose} & \textbf{Prompts Used} \\
+\midrule
+Claude & 
+Recommendation about the system &
+``This is the SRS of our software engineering project and we are continuing the same project in the Database Systems. The scope of project is bit reduced to make it feasible for the course. Automatic timetable generation, archiving, course coordinator user,  has been excluded. Only student, faculty and admin are the users. Moreover, some other things can be excluded (recommend it to me). We need to make proposal for database systems proposal. Project should be feasible. So first recommend what do i need to keep in the system.'', ``This is the proposal, can you identify the problems and recommend the changes'', ``i cannot find data for now, what should i wrrite in data collection section''\\
+\addlinespace
+Grok & 
+Structuring the document &
+``This table does not look good, change its look like table given below:'', ``where can i collect data from for database?''\\
+\bottomrule
+\end{tabular}
+\caption{Tools Used in Proposal Development}
+\label{tab:tools-used}
+\end{table}
+
+\end{document}
