@@ -28,6 +28,8 @@ This project was initially developed as a Software Engineering course project (C
 |------|------------------|
 | Hammad Shabir | NUM-BSCS-2024-25 |
 | Ahmer Sultan | NUM-BSCS-2024-03 |
+| Hasnain Ali | NUM-BSCS-2024-26 |
+| Muhammad Arslan | NIM-BSCS-2021-22 |
 
 ## Documentation
 
